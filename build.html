@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Build_Your_Plan </title>
+</head>
+<body style = "background-color:#000000;">
+  <!--Nav bar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">COMP_SCI_Plan</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:8000/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Extra Resources
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="https://assist.org/">Official Articulations</a>
+                    <a class="dropdown-item" href="https://admission.universityofcalifornia.edu/admission-requirements/transfer-requirements/preparing-to-transfer/general-education-igetc/igetc/">What is IGETC?</a>
+                    <a class="dropdown-item" href="https://uctap.universityofcalifornia.edu/students/">Transfer Admission Planner(TAP)</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+  <!--Title-->
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-auto">
+      <h1 class = "text-white"> Ed-Plan </h1>
+    </div>
+    <div class="col"></div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col">
+      <h5 class = "text-white" id = "current_school"></h5>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <h5 class = "text-white" id = "transfer_school"></h5>
+    </div>
+  </div>
+  -->
+
+
+
+    <script>
+      var fromLocal = localStorage.getItem("inputs")
+      var selectedSchool = localStorage.getItem("selectedSchool")
+    </script>
+
+    <py-config>
+      packages = ["pandas"]
+    </py-config>
+
+    <py-script>
+from js import fromLocal
+from js import selectedSchool
+
+import pandas as pd
+import numpy as np
+import ast #Passing a java script array to py-script, gets turned into a string. Using AST to convert back to array
+from pyodide.http import open_url
+
+
+
+
+user_inputs = ast.literal_eval(fromLocal) #String from local storage to array
+url_content = open_url("https://raw.githubusercontent.com/KChun510/Pandas_CSV_School_Data/main/UC%20and%20CSU%20-%20CSU_UC.csv") #UC and CSU transfer agreements combined
+#url_content = open_url("https://raw.githubusercontent.com/KChun510/Pandas_CSV_School_Data/main/pdf_to_csv%20-%20UC.csv") #School req CSV
+#url_content = open_url("https://raw.githubusercontent.com/KChun510/Pandas_CSV_School_Data/main/Pandas%20CSV%20-%20Sheet1%20(1).csv") #School req CSV
+#url_content = open_url("https://raw.githubusercontent.com/KChun510/Pandas_CSV_School_Data/main/Pandas%20CSV%20-%20Sheet1%20(1).csv") #School req CSV
+
+df = pd.read_csv(url_content)
+
+all_class_dic = {}
+unique_class = {}
+overlap = {"MATH" : [] , "CIS" : [], "PHYS" : [], "ENGL" : [], "ART" : []}
+
+
+
+
+#Creating an all class dictionary I.e: {school : [classes]}
+for choice in user_inputs:
+    all_class_dic[choice] = df[choice].tolist() #Filling all_class_dic, I.e: {school name : [class list]}
+    unique_class[choice] = []
+
+#Need to check "class" I.e: CIS 20, with each class array. So if class not found in all arrays, then add to unique_class
+#ranges [1:61] == classes. [61:length] == Non-artic. [70] == links
+
+#Need to add a statement here. Checking all class arrays before adding to to the overlapping classes.  
+#When checking cis 20 for Santa barbra, it evalutes that its in UC santa cruz, however its not in berkkly
+#Want cis 20 to be addded to both overlap and unique classes
+#If found in one more than one, add to overlap
+#If not found in all, add to unique
+
+
+
+
+length = len(all_class_dic[user_inputs[0]]) - 1 #Exclude final "link" row
+
+for index in range(len(user_inputs)): #need index values of user choices...Needed for checking other key vals. I.e index = 0, all_class_dic[index] == uc berk
+    for classes in all_class_dic[user_inputs[index]][0:length]:
+        
+        check = index + 1 #check - used to eval rest of dictioanary keyes
+      
+        while(check < len(user_inputs)): #Check every dic key, ensuring no class is missed
+
+
+
+            if classes in all_class_dic[user_inputs[check]][0:length] and classes != "None":
+                for key in overlap:
+                  if key[0] == classes[0] and classes not in overlap[key]: 
+                    overlap[key] += [classes]
+                check += 1
+            elif classes != "None":
+                for school in all_class_dic:
+                  if classes not in unique_class[user_inputs[index]]:
+                      unique_class[user_inputs[index]] += [classes]
+                check += 1
+            else:
+              check += 1
+            
+for index in reversed(range(len(user_inputs))): #need index values of user choices...Needed for checking other key vals. I.e index = 0, all_class_dic[index] == uc berk
+  for classes in all_class_dic[user_inputs[index]][0:length]:
+      check = index - 1 #check - used to eval rest of dictioanary keys
+      while(check >= 0):
+          if classes in all_class_dic[user_inputs[check]][0:length] and classes != "None":
+            for key in overlap:
+              if key[0] == classes[0] and classes not in overlap[key]: 
+                overlap[key] += [classes]
+            check -= 1
+          elif classes != "None":
+            for school in all_class_dic:
+              if classes not in unique_class[user_inputs[index]]:
+                  unique_class[user_inputs[index]] += [classes]
+            check -= 1
+          else:
+            check -= 1
+
+
+
+"""
+current_school = Element("current_school")
+transfer = Element("transfer_school")
+
+#list current chosen school
+current_school.element.innerText = "Current School: " + "\n" + selectedSchool
+
+#List chosen transfer schools
+transfer.element.innerText = "Transfering to: "
+for i in user_inputs:
+  transfer.element.innerText += "\n " + i + " "
+"""
+
+#Objective for next time. Out put non overlapping by school and non articlated in the python terminal. Find a way to resize the terminal
+print("\n")
+print("-"*300)
+print("\u0332".join("Your Selecetions:"))
+print(f"\nFrom: {selectedSchool}")
+for classes in user_inputs:
+      print(f"To: {classes}")
+
+print("-"*300)
+print("-"*300)
+
+print("\u0332".join("Overlappig classes by subject"))
+for key in overlap:
+  if len(overlap[key]) >= 1:
+      print(f"\n{key}: ", end = "")
+      for classes in overlap[key]:
+        print (f"{classes},  " , end = "")
+
+print("\n")
+print("-"*300)
+print("-"*300)
+
+print("\u0332".join("Non-Overlapping by school"))
+for key in unique_class:
+  if len(unique_class[key]) >= 1:
+      print(f"\n{key}: \n", end = "")
+      for classes in unique_class[key]:
+        print(f"- {classes}\n" , end = "")
+
+
+print("-"*300)
+print("-"*300)
+
+
+
+print("\u0332".join("Non-Articulated Classes"))
+for key in all_class_dic:
+      if all_class_dic[key][61] == "None":
+        continue
+      else: 
+        print(f"\n{key}: " )
+        for classes in all_class_dic[key][61:length]:
+          if classes != "None":
+            print(f"- {classes}\n" , end = "")
+          
+print("-"*300)
+print("-"*300)
+
+print("\u0332".join(f"Transfer Agreements from {selectedSchool}"))
+for choice in user_inputs:
+  print(f"\nTo: {choice}")
+  print(f"{all_class_dic[choice][length]}")
+
+print("-"*125)
+
+
+
+
+
+
+
+    </py-script>
+    
+
+</html>

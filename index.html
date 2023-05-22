@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Build_Your_Plan</title>
+
+</head>
+<body style = "background-color:#000000;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">COMP_SCI_Plan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Extra Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://assist.org/">Official Articulations</a>
+                        <a class="dropdown-item" href="https://admission.universityofcalifornia.edu/admission-requirements/transfer-requirements/preparing-to-transfer/general-education-igetc/igetc/">What is IGETC?</a>
+                        <a class="dropdown-item" href="https://uctap.universityofcalifornia.edu/students/">Transfer Admission Planner(TAP)</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row py-5">
+        <div class="col"></div>
+        <div class="col-md-auto">
+            <h1 class="text-white" id="typing-text"></h1>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row py-3">
+        <div class="col"></div>
+        <div class="col-md-auto col-lg">
+            <form>
+                <div class="form-group">
+                    <label for="input-dropdown-current" class="text-white">Select your school:</label>
+                    <select class="form-control" id="input-dropdown-current">
+                        <option>Laney Community College	</option>
+                        <option>Alameda Community College </option>
+                        <option>Merrit Community College </option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row py-3">
+        <div class="col"></div>
+        <div class="col-md-auto col-lg">
+            <form>
+                <div class="form-group">
+                    <label for="input-dropdown" class="text-white">Select transfer schools: </label>
+                    <select class="form-control" id="input-dropdown">
+                        <option>University of California, San Diego, CSE: Computer Science with a Specialization in Bioinformatics B.S.</option>
+                        <option>University of California, San Diego, Mathematics/Computer Science B.S.</option>
+                        <option>University of California, San Diego, Music: Interdisciplinary Computing in the Arts Major (ICAM) B.A.</option>
+                        <option>University of California, Santa Barbara, Computer Engineering, B.S.</option>
+                        <option>University of California, Santa Barbara, Computer Science, B.S.</option>
+                        <option>University of California, Santa Barbara, Creative Studies - Computing, B.S.</option>
+                        <option>University of California, Santa Cruz, Computer Engineering B.S.</option>
+                        <option>University of California, Santa Cruz, Computer Science B.A.</option>
+                        <option>University of California, Santa Cruz, Computer Science B.S.</option>
+                        <option>University of California, Santa Cruz, Computer Science: Computer Game Design B.S.</option>
+                        <option>University of California, Berkeley, Computer Science, Lower Division B.A.</option>
+                        <option>University of California, Berkeley, Electrical Engineering & Computer Sciences, Lower Division B.S.</option>
+                        <option>University of California, Davis, Computer Engineering B.S.</option>
+                        <option>University of California, Davis, Computer Science & Engineering B.S.</option>
+                        <option>University of California, Davis, Computer Science B.S.</option>
+                        <option>University of California, Irvine, Computer Engineering, B.S.</option>
+                        <option>University of California, Irvine, Computer Science and Engineering, B.S.</option>
+                        <option>University of California, Irvine, Computer Science, B.S.</option>
+                        <option>University of California, Los Angeles, Computer Engineering/B.S.</option>
+                        <option>University of California, Los Angeles, Computer Science and Engineering/B.S.</option>
+                        <option>University of California, Los Angeles, Computer Science/B.S.</option>
+                        <option>University of California, Los Angeles, Linguistics and Computer Science/B.A.</option>
+                        <option>University of California, Merced, Applied Mathematical Sciences, Computer Science Emphasis, B.S.</option>
+                        <option>University of California, Merced, Computer Science and Engineering, B.S.</option>
+                        <option>University of California, Riverside, Computer Engineering, B.S.</option>
+                        <option>University of California, Riverside, Computer Science with Business Applications B.S.</option>
+                        <option>University of California, Riverside, Computer Science, B.S.</option>
+                        <option>University of California, San Diego, Art: Interdisciplinary Computing in the Arts Major (ICAM) B.A. (Visual Arts)</option>
+                        <option>University of California, San Diego, CSE: Computer Science B.S.</option>
+                        <option>University of California, San Diego, ECE: Computer Engineering B.S.</option>
+                        <option>California State University, Chico, Computer Information Systems B.S. </option>
+                        <option>California State University, Chico, Computer Science B.S. </option>
+                        <option>California State University, Dominguez Hills, Computer Science B.S. </option>
+                        <option>California State University, Dominguez Hills, Computer Technology B.A. General Track </option>
+                        <option>California State University, Dominguez Hills, Computer Technology B.A. Homeland Security Track </option>
+                        <option>California State University, Dominguez Hills, Computer Technology B.A. Professional Track </option>
+                        <option>California State University, East Bay, Computer Engineering, B.S. </option>
+                        <option>California State University, East Bay, Computer Science, B.S. </option>
+                        <option>California State University, Fresno, Computer Engineering (B.S.) </option>
+                        <option>California State University, Fresno, Computer Science (B.S.) </option>
+                        <option>California State University, Fullerton, Art, B.F.A. - Computer Animation and Game Art Concentration </option>
+                        <option>California State University, Fullerton, Computer Engineering, B.S. </option>
+                        <option>California State University, Fullerton, Computer Science, B.S. </option>
+                        <option>California State University, Long Beach, Computer Engineering </option>
+                        <option>California State University, Long Beach, Computer Engineering Technology </option>
+                        <option>California State University, Long Beach, Computer Science </option>
+                        <option>California State University, Los Angeles, Computer Information Systems - B.S. </option>
+                        <option>California State University, Los Angeles, Computer Science - B.S. </option>
+                        <option>California State University, Monterey Bay, Computer Science B.S. </option>
+                        <option>California State University, Northridge, COMPUTER ENGINEERING, B.S. </option>
+                        <option>California State University, Northridge, COMPUTER INFORMATION TECHNOLOGY, B.S. </option>
+                        <option>California State University, Northridge, COMPUTER SCIENCE, B.S. </option>
+                        <option>California State University, Northridge, INFORMATION SYSTEMS, B.S. - Option in Computer Information Technology </option>
+                        <option>California State University, Sacramento, Computer Engineering, BS </option>
+                        <option>California State University, San Bernardino, Computer Engineering - B.S. </option>
+                        <option>California State University, San Bernardino, Computer Science - B.S. </option>
+                        <option>California State University, San Bernardino, Computer Systems - B.A. </option>
+                        <option>California State University, San Marcos, Computer Science - CIS Option </option>
+                        <option>California State University, San Marcos, Computer Science - CS Option </option>
+                        <option>Sonoma State University, Computer Science B.S. </option>
+                        <option>California State University, Stanislaus, Computer Science B.S. </option>
+                        <option>San Diego State University, Computer Engineering </option>
+                        <option>San Diego State University, Computer Science </option>
+                        <option>San Francisco State University, Computer Engineering, B.S. </option>
+                        <option>San Francisco State University, Computer Science, B.S. </option>
+                        <option>San Jose State University, Computer Science, B.S. </option>
+                        <option>San Jose State University, Engineering - Computer Engineering, B.S. </option>
+                        <option>San Jose State University, Engineering Technology, Concentration in Computer Network System Management, B.S. </option>
+
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row py-3">
+        <div class="col"></div>
+        <div class="col-md-auto">
+            <button type="button" class="btn btn-primary mx-5" id="save-button">Save</button>
+            <button type="button" class="btn btn-primary mx-5" id="del-local">Clear Choices</button>
+            <a type="button" class="btn btn-primary mx-5" id="Build_Plan" href="http://localhost:8000/build.html" target="_self">Build Plan</a>
+        </div>
+        <div class="col"></div>
+    </div>
+    
+
+
+
+    <script>
+        const dropdown = document.getElementById("input-dropdown-current");
+
+        dropdown.addEventListener("change", function () {
+        localStorage.setItem("selectedSchool", dropdown.value);
+        });
+    </script>
+
+</body>
+</html>
+<script src="data.js"></script>
+<script src="words.js"></script>
