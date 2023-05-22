@@ -161,6 +161,7 @@
 
     <script>
         const dropdown = document.getElementById("input-dropdown-current");
+        localStorage.setItem("selectedSchool", dropdown.value)
 
         dropdown.addEventListener("change", function () {
         localStorage.setItem("selectedSchool", dropdown.value);
