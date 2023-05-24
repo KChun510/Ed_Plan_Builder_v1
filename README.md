@@ -1,5 +1,8 @@
 ### Hi there 👋
 
+Link to application presentation: https://docs.google.com/presentation/d/1WGp-w2ZAkU14ENuODtFEMw2AmDSbmLwzwZP5wXM55hw/edit?usp=sharing
+
+
 <!--
 **KChun510/KChun510** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
