@@ -210,14 +210,14 @@ print("-"*300)
 print("-"*300)
 
 
-
+#Non artic starts at row 60, minus 2 from listed in csv
 print("\u0332".join("Non-Articulated Classes"))
 for key in all_class_dic:
-      if all_class_dic[key][62] == "None":
+      if all_class_dic[key][60] == "None":
         continue
       else: 
         print(f"\n{key}: " )
-        for classes in all_class_dic[key][62:length]:
+        for classes in all_class_dic[key][60:length]:
           if classes != "None":
             print(f"- {classes}\n" , end = "")
           
