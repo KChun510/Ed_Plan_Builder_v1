@@ -1,6 +1,9 @@
 ### Hi there 👋
 
-Visit Live webpage: https://kchun510.github.io/
+Visit Live webpage: N/A, no longer active (7/29/2023)
+
+Screenshot: ![image](https://github.com/KChun510/KChun510.github.io/assets/106642545/a0ca32f4-f378-4ee7-836f-39c47eae98d6)
+
 
 Link to application presentation: https://docs.google.com/presentation/d/1WGp-w2ZAkU14ENuODtFEMw2AmDSbmLwzwZP5wXM55hw/edit?usp=sharing
 
